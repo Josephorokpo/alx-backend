@@ -1,4 +1,12 @@
-def index_range(page: int, page_size: int) -> tuple[int, int]:
+#!/usr/bin/env python3
+"""
+A function named index_range that takes two integer arguments
+page and page_size
+"""
+from typing import Tuple
+
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Returns a tuple of start index and end index for pagination.
 
@@ -9,10 +17,9 @@ def index_range(page: int, page_size: int) -> tuple[int, int]:
     Returns:
         tuple[int, int]: A tuple containing the start index and end index.
     """
-    if page <= 0 or page_size <= 0:
-        raise ValueError("Page and page_size must be positive integers.")
+    start, end = 0, 0
+    for i in range(page):
+        start = end
+        end += page_size
 
-    start_index = (page - 1) * page_size
-    end_index = start_index + page_size - 1
-
-    return start_index, end_index
+    return (start, end)
